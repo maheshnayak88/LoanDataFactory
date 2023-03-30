@@ -1,0 +1,26 @@
+name: Deploy Data Factory pipelines
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Deploy Data Factory
+        uses: azure/arm-deploy@v1
+        with:
+          subscription-id: ${{ secrets.SUBSCRIPTION_ID }}
+          tenant-id: ${{ secrets.TENANT_ID }}
+          client-id: ${{ secrets.CLIENT_ID }}
+          client-secret: ${{ secrets.CLIENT_SECRET }}
+          resource-group: my-resource-group
+          template-file: ./arm-template.json
+          parameters-file: ./arm-parameters.json
+          deployment-mode: Complete
