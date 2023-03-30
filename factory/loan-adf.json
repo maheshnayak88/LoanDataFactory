@@ -1,0 +1,9 @@
+{
+	"name": "loan-adf",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "012deb10-a17f-49f5-9161-0619339dc844",
+		"tenantId": "20d9a3d4-1651-4700-937f-565483826cac"
+	}
+}

@@ -1,0 +1,39 @@
+{
+	"name": "SinkAllParquetDataset_withTableName",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureStorageLinkedService",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"TableName": {
+				"type": "string"
+			},
+			"FileName": {
+				"type": "string"
+			},
+			"SchemaName": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": {
+					"value": "@concat(dataset().FileName,formatDatetime(utcnow(),'_ddMMyyyy_hhmmss'),'.parquet')",
+					"type": "Expression"
+				},
+				"folderPath": {
+					"value": "@concat(dataset().SchemaName,'/',dataset().FileName,'/',formatDatetime(utcnow(),'yyyy'),'/',formatDatetime(utcnow(),'MM'),'/',formatDatetime(utcnow(),'dd'),'/')\n",
+					"type": "Expression"
+				},
+				"container": "latest-parquet-container"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

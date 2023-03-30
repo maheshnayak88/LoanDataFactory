@@ -1,0 +1,47 @@
+{
+	"name": "EmployeeLoan",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabaseLinkedService",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "ID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "emp_title",
+				"type": "nvarchar"
+			},
+			{
+				"name": "emp_length",
+				"type": "nvarchar"
+			},
+			{
+				"name": "state",
+				"type": "nchar"
+			},
+			{
+				"name": "homeownership",
+				"type": "nvarchar"
+			},
+			{
+				"name": "annual_income",
+				"type": "nvarchar"
+			},
+			{
+				"name": "verified_income",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "Employee_Loan"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

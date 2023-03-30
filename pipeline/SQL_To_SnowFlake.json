@@ -1,0 +1,131 @@
+{
+	"name": "SQL_To_SnowFlake",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy From SQL Server to SnowFlake",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "SnowflakeSink",
+						"importSettings": {
+							"type": "SnowflakeImportCopyCommand"
+						}
+					},
+					"enableStaging": true,
+					"stagingSettings": {
+						"linkedServiceName": {
+							"referenceName": "linkedService1",
+							"type": "LinkedServiceReference"
+						},
+						"path": "latest-parquet-container/Employee_Loan"
+					},
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "ID",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "ID",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "emp_title",
+									"type": "String"
+								},
+								"sink": {
+									"name": "EMP_TITLE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "emp_length",
+									"type": "String"
+								},
+								"sink": {
+									"name": "EMP_LENGTH",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "state",
+									"type": "String"
+								},
+								"sink": {
+									"name": "STATE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "homeownership",
+									"type": "String"
+								},
+								"sink": {
+									"name": "HOMEOWNERSHIP",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "annual_income",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ANNUAL_INCOME",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "verified_income",
+									"type": "String"
+								},
+								"sink": {
+									"name": "VERIFIED_INCOME",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "EmployeeLoan",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SnowflakeTable",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2023-03-22T13:36:21Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

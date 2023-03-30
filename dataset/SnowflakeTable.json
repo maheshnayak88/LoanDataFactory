@@ -1,0 +1,60 @@
+{
+	"name": "SnowflakeTable",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Snowflake1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SnowflakeTable",
+		"schema": [
+			{
+				"name": "ID",
+				"type": "NUMBER",
+				"precision": 38,
+				"scale": 0
+			},
+			{
+				"name": "EMP_TITLE",
+				"type": "VARCHAR",
+				"precision": 250,
+				"scale": 0
+			},
+			{
+				"name": "EMP_LENGTH",
+				"type": "VARCHAR",
+				"precision": 250,
+				"scale": 0
+			},
+			{
+				"name": "STATE",
+				"type": "VARCHAR",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "HOMEOWNERSHIP",
+				"type": "VARCHAR",
+				"precision": 250,
+				"scale": 0
+			},
+			{
+				"name": "ANNUAL_INCOME",
+				"type": "VARCHAR",
+				"precision": 250,
+				"scale": 0
+			},
+			{
+				"name": "VERIFIED_INCOME",
+				"type": "VARCHAR",
+				"precision": 50,
+				"scale": 0
+			}
+		],
+		"typeProperties": {
+			"schema": "PUBLIC",
+			"table": "EMPLOYEE_LOAN_TEST"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
